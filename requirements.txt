@@ -1,0 +1,6 @@
+numpy
+pandas
+pyarrow
+umap-learn
+fastapi
+uvicorn[standard]

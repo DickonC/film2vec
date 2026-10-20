@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Film2Vec</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/",
+        "fuse": "https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.mjs"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="tooltip" hidden></div>
+
+  <div id="panel">
+    <div class="brand">film2vec</div>
+    <div id="mode">
+      <button data-mode="most" class="active">most similar</button>
+      <button data-mode="least">least similar</button>
+    </div>
+    <div class="search">
+      <input id="search" type="text" placeholder="find me a film like…" autocomplete="off" spellcheck="false">
+      <ul id="suggestions" hidden></ul>
+    </div>
+    <button id="back" hidden>← back to all films</button>
+    <ol id="results" hidden></ol>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

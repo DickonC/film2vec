@@ -1,0 +1,102 @@
+:root {
+  --fg: #fff;
+  --dim: rgba(255, 255, 255, 0.45);
+  --line: rgba(255, 255, 255, 0.15);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  color: var(--fg);
+  font: 13px/1.4 ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+canvas { display: block; }
+
+#tooltip {
+  position: fixed;
+  pointer-events: none;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--line);
+  white-space: nowrap;
+  transform: translate(12px, 12px);
+}
+#tooltip .meta { color: var(--dim); font-size: 11px; }
+
+#panel {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: min(320px, calc(100vw - 32px));
+}
+
+.brand { color: var(--dim); letter-spacing: 0.2em; margin-bottom: 12px; }
+
+#mode { display: flex; gap: 14px; margin-bottom: 4px; }
+#mode button {
+  padding: 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  color: var(--dim);
+  font: inherit;
+  cursor: pointer;
+}
+#mode button:hover { color: var(--fg); }
+#mode button.active { color: var(--fg); border-bottom-color: var(--fg); }
+
+.search { position: relative; }
+
+#search {
+  width: 100%;
+  padding: 8px 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--fg);
+  font: inherit;
+  outline: none;
+}
+#search:focus { border-bottom-color: var(--fg); }
+#search::placeholder { color: var(--dim); }
+
+#suggestions, #results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#suggestions {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #000;
+  border: 1px solid var(--line);
+  border-top: 0;
+  z-index: 1;
+}
+#suggestions li, #results li { padding: 6px 8px; cursor: pointer; }
+#suggestions li.active, #suggestions li:hover, #results li:hover { background: rgba(255, 255, 255, 0.08); }
+
+#results { margin-top: 14px; counter-reset: rank; }
+#results li { display: flex; gap: 10px; padding-left: 0; }
+#results li::before { counter-increment: rank; content: counter(rank); color: var(--dim); }
+#results .title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#results .score { color: var(--dim); }
+
+#back {
+  margin-top: 14px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--dim);
+  font: inherit;
+  cursor: pointer;
+}
+#back:hover { color: var(--fg); }
+
